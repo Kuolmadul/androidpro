@@ -1,5 +1,6 @@
 package net.ezra.navigation
 
+import android.window.SplashScreen
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -7,7 +8,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import net.ezra.ui.Splash.SplashScreen
 import net.ezra.ui.about.AboutScreen
+import net.ezra.ui.assg.AssgScreen
 import net.ezra.ui.auth.LoginScreen
 import net.ezra.ui.auth.SignupScreen
 import net.ezra.ui.home.HomeScreen
@@ -60,6 +63,18 @@ fun AppNavHost(
 
         composable(ROUTE_SERVICES) {
             ServicesScreen(navController)
+        }
+
+
+
+        composable(ROUTE_ASSG) {
+            AssgScreen(navController)
+        }
+
+
+
+        composable(ROUTE_SPLASH) {
+            SplashScreen(navController)
         }
 
 

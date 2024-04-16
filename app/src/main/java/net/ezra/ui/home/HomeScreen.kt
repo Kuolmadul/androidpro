@@ -48,6 +48,8 @@ import net.ezra.navigation.ROUTE_HOME
 import net.ezra.navigation.ROUTE_MIT
 import net.ezra.navigation.ROUTE_SERVICES
 import net.ezra.R
+import net.ezra.navigation.ROUTE_ASSG
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavHostController) {
@@ -86,6 +88,37 @@ fun HomeScreen(navController: NavHostController) {
 
 
             Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .padding(10.dp)
+                    .padding(top = 10.dp)
+
+            ) {
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    modifier = Modifier
+
+                        .clickable {
+                            navController.navigate(ROUTE_ASSG) {
+                                popUpTo(ROUTE_HOME) { inclusive = true }
+                            }
+                        },
+                    text = "Assg Screen",
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
+//                    color = Color.White
+                )
+
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+
+
+
+
+
+                Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
@@ -138,15 +171,19 @@ fun HomeScreen(navController: NavHostController) {
                     text = "Services screen",
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface
-                   // color = Color.White
+                    // color = Color.White
                 )
 
             }
 
-            Box(modifier =Modifier,
-                Alignment.Center
 
-            ) {
+
+
+                Box(
+                    modifier = Modifier,
+                    Alignment.Center
+
+                ) {
 
 
 //                Column (modifier=Modifier,
@@ -158,207 +195,206 @@ fun HomeScreen(navController: NavHostController) {
 //                }
 
 
-                Image(
-                    painter = painterResource(id = R.drawable.bib), contentDescription = "null",
-                    modifier = Modifier
+                    Image(
+                        painter = painterResource(id = R.drawable.bib), contentDescription = "null",
+                        modifier = Modifier
 //        .background(Color.Cyan)
-                        .clip(RoundedCornerShape(50))
-                        .size(200.dp),
-                    //.fillMaxSize() ,
+                            .clip(RoundedCornerShape(50))
+                            .size(200.dp),
+                        //.fillMaxSize() ,
 
 //    colorFilter = ColorFilter.tint(Color.Red),
-                    contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop
 //    contentScale = ContentScale.FillBounds
-                )
-
-
-
-                Column(
-                    modifier = Modifier
-//        .background(Color.Gray)
-                        .fillMaxSize()
-                        .padding(20.dp),
-
-                    horizontalAlignment = Alignment.CenterHorizontally
-
-                ) {
-                    Text(
-                        text = "Please register here if you do not have an acount",
-                        color = Color.White
                     )
 
-                    Spacer(modifier = Modifier.height(10.dp))
 
-                    var name by remember {
-                        mutableStateOf(TextFieldValue(" "))
-                    }
-                    OutlinedTextField(
-                        value = name,
-                        onValueChange = { name = it },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Person,
-                                contentDescription = ""
-                            )
-                        },
-                        label = { Text(text = "Enter name") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-                        textStyle = androidx.compose.ui.text.TextStyle(Color.White),
-
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = Color.Green,
-                            unfocusedBorderColor = Color.Red,
-                            focusedLabelColor = Color.Green,
-                            cursorColor = Color.Green,
-                            unfocusedLabelColor = Color.Red,
-                            unfocusedLeadingIconColor = Color.Red,
-                            unfocusedTextColor = Color.White,
-                            focusedTextColor = Color.Green,
-
-
-                            ),
-
-
-                        )
-                    Spacer(modifier = Modifier.height(10.dp))
-//
-
-                    var email by remember {
-                        mutableStateOf(TextFieldValue(" "))
-                    }
-                    OutlinedTextField(
-                        value = email,
-                        onValueChange = { email = it },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Email,
-                                contentDescription = ""
-                            )
-                        },
-                        label = { Text(text = "Enter email") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-                        textStyle = androidx.compose.ui.text.TextStyle(Color.White),
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = Color.Green,
-                            unfocusedBorderColor = Color.Red,
-                            focusedLabelColor = Color.Green,
-                            cursorColor = Color.Green,
-                            unfocusedLabelColor = Color.Red,
-                            unfocusedLeadingIconColor = Color.Red,
-                            unfocusedTextColor = Color.White,
-                            focusedTextColor = Color.Green,
-
-
-                            ),
-
-
-                        )
-                    Spacer(modifier = Modifier.height(10.dp))
-//
-
-
-                    var phone by remember {
-                        mutableStateOf(TextFieldValue(" "))
-                    }
-                    OutlinedTextField(
-                        value = phone,
-                        onValueChange = { phone = it },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Phone,
-                                contentDescription = ""
-                            )
-                        },
-                        label = { Text(text = "Enter number") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-                        textStyle = androidx.compose.ui.text.TextStyle(Color.White),
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = Color.Green,
-                            unfocusedBorderColor = Color.Red,
-                            focusedLabelColor = Color.Green,
-                            cursorColor = Color.Green,
-                            unfocusedLabelColor = Color.Red,
-                            unfocusedLeadingIconColor = Color.Red,
-                            unfocusedTextColor = Color.White,
-                            focusedTextColor = Color.Green,
-
-
-                            ),
-
-                        )
-                    Spacer(modifier = Modifier.height(10.dp))
-//
-
-
-                    var password by remember {
-                        mutableStateOf(TextFieldValue(" "))
-                    }
-                    OutlinedTextField(
-                        value = password,
-                        onValueChange = { password = it },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Lock,
-                                contentDescription = ""
-                            )
-                        },
-                        label = { Text(text = "Password") },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                        textStyle = androidx.compose.ui.text.TextStyle(Color.White),
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = Color.Green,
-                            unfocusedBorderColor = Color.Red,
-                            focusedLabelColor = Color.Green,
-                            cursorColor = Color.Green,
-                            unfocusedLabelColor = Color.Red,
-                            unfocusedLeadingIconColor = Color.Red,
-                            unfocusedTextColor = Color.White,
-                            focusedTextColor = Color.Green,
-
-                            ),
-
-                        )
-                    Spacer(modifier = Modifier.height(10.dp))
-//
 
                     Column(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentHeight()
-                            .padding(10.dp)
-                            .padding(top = 10.dp)
+//        .background(Color.Gray)
+                            .fillMaxSize()
+                            .padding(20.dp),
+
+                        horizontalAlignment = Alignment.CenterHorizontally
 
                     ) {
-                        Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            modifier = Modifier
-
-                                .clickable {
-                                    navController.navigate(ROUTE_ABOUT) {
-                                        popUpTo(ROUTE_HOME) { inclusive = true }
-                                    }
-                                },
-                            text = "Visit our page",
-                            textAlign = TextAlign.Center,
-                            // color = MaterialTheme.colorScheme.onSurface
-                            color = Color.Green
+                            text = "Please register here if you do not have an acount",
+                            color = Color.White
                         )
 
+                        Spacer(modifier = Modifier.height(10.dp))
+
+                        var name by remember {
+                            mutableStateOf(TextFieldValue(" "))
+                        }
+                        OutlinedTextField(
+                            value = name,
+                            onValueChange = { name = it },
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Default.Person,
+                                    contentDescription = ""
+                                )
+                            },
+                            label = { Text(text = "Enter name") },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                            textStyle = androidx.compose.ui.text.TextStyle(Color.White),
+
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color.Green,
+                                unfocusedBorderColor = Color.Red,
+                                focusedLabelColor = Color.Green,
+                                cursorColor = Color.Green,
+                                unfocusedLabelColor = Color.Red,
+                                unfocusedLeadingIconColor = Color.Red,
+                                unfocusedTextColor = Color.White,
+                                focusedTextColor = Color.Green,
+
+
+                                ),
+
+
+                            )
+                        Spacer(modifier = Modifier.height(10.dp))
+//
+
+                        var email by remember {
+                            mutableStateOf(TextFieldValue(" "))
+                        }
+                        OutlinedTextField(
+                            value = email,
+                            onValueChange = { email = it },
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Default.Email,
+                                    contentDescription = ""
+                                )
+                            },
+                            label = { Text(text = "Enter email") },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                            textStyle = androidx.compose.ui.text.TextStyle(Color.White),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color.Green,
+                                unfocusedBorderColor = Color.Red,
+                                focusedLabelColor = Color.Green,
+                                cursorColor = Color.Green,
+                                unfocusedLabelColor = Color.Red,
+                                unfocusedLeadingIconColor = Color.Red,
+                                unfocusedTextColor = Color.White,
+                                focusedTextColor = Color.Green,
+
+
+                                ),
+
+
+                            )
+                        Spacer(modifier = Modifier.height(10.dp))
+//
+
+
+                        var phone by remember {
+                            mutableStateOf(TextFieldValue(" "))
+                        }
+                        OutlinedTextField(
+                            value = phone,
+                            onValueChange = { phone = it },
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Default.Phone,
+                                    contentDescription = ""
+                                )
+                            },
+                            label = { Text(text = "Enter number") },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                            textStyle = androidx.compose.ui.text.TextStyle(Color.White),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color.Green,
+                                unfocusedBorderColor = Color.Red,
+                                focusedLabelColor = Color.Green,
+                                cursorColor = Color.Green,
+                                unfocusedLabelColor = Color.Red,
+                                unfocusedLeadingIconColor = Color.Red,
+                                unfocusedTextColor = Color.White,
+                                focusedTextColor = Color.Green,
+
+
+                                ),
+
+                            )
+                        Spacer(modifier = Modifier.height(10.dp))
+//
+
+
+                        var password by remember {
+                            mutableStateOf(TextFieldValue(" "))
+                        }
+                        OutlinedTextField(
+                            value = password,
+                            onValueChange = { password = it },
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Default.Lock,
+                                    contentDescription = ""
+                                )
+                            },
+                            label = { Text(text = "Password") },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                            textStyle = androidx.compose.ui.text.TextStyle(Color.White),
+                            colors = TextFieldDefaults.outlinedTextFieldColors(
+                                focusedBorderColor = Color.Green,
+                                unfocusedBorderColor = Color.Red,
+                                focusedLabelColor = Color.Green,
+                                cursorColor = Color.Green,
+                                unfocusedLabelColor = Color.Red,
+                                unfocusedLeadingIconColor = Color.Red,
+                                unfocusedTextColor = Color.White,
+                                focusedTextColor = Color.Green,
+
+                                ),
+
+                            )
+                        Spacer(modifier = Modifier.height(10.dp))
+//
+
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .padding(10.dp)
+                                .padding(top = 10.dp)
+
+                        ) {
+                            Spacer(modifier = Modifier.height(20.dp))
+                            Text(
+                                modifier = Modifier
+
+                                    .clickable {
+                                        navController.navigate(ROUTE_ABOUT) {
+                                            popUpTo(ROUTE_HOME) { inclusive = true }
+                                        }
+                                    },
+                                text = "Visit our page",
+                                textAlign = TextAlign.Center,
+                                // color = MaterialTheme.colorScheme.onSurface
+                                color = Color.Green
+                            )
 
 
 
 
-                        Spacer(modifier = Modifier.height(20.dp))
+                            Spacer(modifier = Modifier.height(20.dp))
+
+
+                        }
 
 
                     }
-
-
                 }
             }
         }
     }
-
 
 
 
